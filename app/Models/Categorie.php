@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Secteur extends Model
+class Categorie extends Model
 {
     use HasFactory;
 
@@ -15,14 +15,14 @@ class Secteur extends Model
      * @var array
      */
     protected $fillable = [
-        'nom_secteur'
+        'nom_categorie', 'secteur_id'
     ];
 
     /**
-     * Get the categories for the secteur.
+     * Get the secteur that owns the categorie.
      */
-    public function categories()
+    public function secteur()
     {
-        return $this->hasMany(Categorie::class);
+        return $this->belongsTo(Secteur::class);
     }
 }

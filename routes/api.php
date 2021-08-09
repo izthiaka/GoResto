@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CategorieController;
 use App\Http\Controllers\API\SecteurController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/secteurs/{id}', [SecteurController::class, 'show']);
     Route::put('/secteur/{id}', [SecteurController::class, 'update']);
     Route::delete('/secteur/{id}', [SecteurController::class, 'destroy']);
-    // Route::get('/entreprises/{identreprise}', 'API\EntrepriseController@show');
+
+    // Resource Categorie
+    Route::get('/categories', [CategorieController::class, 'index']);
+    Route::post('/categorie', [CategorieController::class, 'store']);
+    Route::get('/categories/{id}', [CategorieController::class, 'show']);
+    Route::put('/categorie/{id}', [CategorieController::class, 'update']);
+    Route::delete('/categorie/{id}', [CategorieController::class, 'destroy']);
 
     // Infos Dashboard
 });
