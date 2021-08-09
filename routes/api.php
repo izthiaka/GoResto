@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CaisseController;
 use App\Http\Controllers\API\CategorieController;
+use App\Http\Controllers\API\ProduitController;
 use App\Http\Controllers\API\SecteurController;
 use App\Http\Controllers\API\TableController;
 use Illuminate\Http\Request;
@@ -66,6 +67,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/caisses/{id}', [CaisseController::class, 'show']);
     Route::put('/caisse/{id}', [CaisseController::class, 'update']);
     Route::delete('/caisse/{id}', [CaisseController::class, 'destroy']);
+
+    // Resource Produit
+    Route::get('/produits', [ProduitController::class, 'index']);
+    Route::post('/produit', [ProduitController::class, 'store']);
+    Route::get('/produits/{id}', [ProduitController::class, 'show']);
+    Route::put('/produit/{id}', [ProduitController::class, 'update']);
+    Route::delete('/produit/{id}', [ProduitController::class, 'destroy']);
 
     // Infos Dashboard
 });

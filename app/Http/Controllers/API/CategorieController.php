@@ -106,13 +106,13 @@ class CategorieController extends Controller
      */
     public function destroy($id)
     {
-        $secteur = Categorie::where('id', $id)->first();
+        $categorie = Categorie::where('id', $id)->first();
 
-        if ($secteur == null) {
+        if ($categorie == null) {
             $response = ["error" =>'Categorie does not exist'];
             return response($response, 422);
         }
-        $secteur->delete();
+        $categorie->delete();
 
         return response(['message' => 'Deleted']);
     }
