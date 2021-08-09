@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategorieController;
 use App\Http\Controllers\API\SecteurController;
+use App\Http\Controllers\API\TableController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/categories/{id}', [CategorieController::class, 'show']);
     Route::put('/categorie/{id}', [CategorieController::class, 'update']);
     Route::delete('/categorie/{id}', [CategorieController::class, 'destroy']);
+
+    // Resource Table
+    Route::get('/tables', [TableController::class, 'index']);
+    Route::post('/table', [TableController::class, 'store']);
+    Route::get('/tables/{id}', [TableController::class, 'show']);
+    Route::put('/table/{id}', [TableController::class, 'update']);
+    Route::delete('/table/{id}', [TableController::class, 'destroy']);
 
     // Infos Dashboard
 });
