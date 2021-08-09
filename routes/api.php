@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CaisseController;
 use App\Http\Controllers\API\CategorieController;
 use App\Http\Controllers\API\SecteurController;
 use App\Http\Controllers\API\TableController;
@@ -58,6 +59,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/tables/{id}', [TableController::class, 'show']);
     Route::put('/table/{id}', [TableController::class, 'update']);
     Route::delete('/table/{id}', [TableController::class, 'destroy']);
+
+    // Resource Caisse
+    Route::get('/caisses', [CaisseController::class, 'index']);
+    Route::post('/caisse', [CaisseController::class, 'store']);
+    Route::get('/caisses/{id}', [CaisseController::class, 'show']);
+    Route::put('/caisse/{id}', [CaisseController::class, 'update']);
+    Route::delete('/caisse/{id}', [CaisseController::class, 'destroy']);
 
     // Infos Dashboard
 });
