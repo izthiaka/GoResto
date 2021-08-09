@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\SecteurController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,20 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->group(function () {
+    // our routes to be protected will go in here
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout.api');
+
+    // Infos profil
+    // Route::get('/profil', 'API\UserController@profil');
+
+    // Resource Serveur
+    Route::get('/secteurs', [SecteurController::class, 'index']);
+    Route::post('/secteur', [SecteurController::class, 'store']);
+    Route::get('/secteurs/{id}', [SecteurController::class, 'show']);
+    Route::put('/secteur/{id}', [SecteurController::class, 'update']);
+    Route::delete('/secteur/{id}', [SecteurController::class, 'destroy']);
+    // Route::get('/entreprises/{identreprise}', 'API\EntrepriseController@show');
+
+    // Infos Dashboard
 });
