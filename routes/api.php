@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CaisseController;
 use App\Http\Controllers\API\CategorieController;
+use App\Http\Controllers\API\CommandeController;
 use App\Http\Controllers\API\ProduitController;
 use App\Http\Controllers\API\SecteurController;
 use App\Http\Controllers\API\TableController;
@@ -74,6 +75,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/produits/{id}', [ProduitController::class, 'show']);
     Route::put('/produit/{id}', [ProduitController::class, 'update']);
     Route::delete('/produit/{id}', [ProduitController::class, 'destroy']);
+
+    // Resource Commande
+    Route::get('/commandes', [CommandeController::class, 'index']);
+    Route::post('/commande', [CommandeController::class, 'store']);
+    Route::get('/commandes/{id}', [CommandeController::class, 'show']);
+    Route::put('/commande/{id}', [CommandeController::class, 'update']);
+    Route::delete('/commande/{id}', [CommandeController::class, 'destroy']);
 
     // Infos Dashboard
 });

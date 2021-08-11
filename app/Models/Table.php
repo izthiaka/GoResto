@@ -17,4 +17,12 @@ class Table extends Model
     protected $fillable = [
         'numero', 'nbr_couvert'
     ];
+
+    /**
+     * Get the categories for the secteur.
+     */
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class);
+    }
 }
